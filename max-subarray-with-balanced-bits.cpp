@@ -40,5 +40,6 @@ int main() {
   assert(maxLength({0, 1, 1, 1, 1}) == 2);
   assert(maxLength({1, 1, 1, 1}) == 0);
   assert(maxLength({0, 0, 0, 0}) == 0);
+  assert(maxLength({1, 0, 1, 0}) == 4);
   return 0;
 }
