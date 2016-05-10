@@ -9,7 +9,7 @@
  * {1,3,4}, {1, 4, 8}, {1, 3, 8}, {3, 4, 8}.
  * The minimum consecutive difference for these four selections are
  * 2, 3, 2, 1, respectively. The maximum of these minimum consecutive
- * differences is 3, which is from selection {1, 4, 8}. 
+ * differences is 3, which is from selection {1, 4, 8}.
  */
 
 #include <cassert>
@@ -67,4 +67,5 @@ int solve(vector<int> arr, int k) {
 int main() {
   assert(solve({1, 2, 3, 4}, 3) == 1);
   assert(solve({1, 3, 4, 8}, 3) == 3);
+  assert(solve({1, 3, 4, 8, 15}, 3) == 7);
 }
