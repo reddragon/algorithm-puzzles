@@ -42,7 +42,7 @@ using namespace std;
 
 // Find the first separator after idx, which is taller or of the same height
 // as idx.
-int nextSeperator(const vector<int>& h, int idx) {
+int nextSeperator(const vector<int> &h, int idx) {
   int target = idx + 1;
   for (int j = idx + 1; j < h.size(); j++) {
     if (h[j] >= h[idx]) {
@@ -57,7 +57,7 @@ int nextSeperator(const vector<int>& h, int idx) {
 
 int solve(vector<int> h) {
   int maxVol = 0;
-  for (int i = 0; i < h.size(); ) {
+  for (int i = 0; i < h.size();) {
     int next = nextSeperator(h, i);
     if (next > h.size()) {
       break;
