@@ -29,17 +29,17 @@ int solve(int i, int j, int sz) {
   return ret;
 }
 
-int solve(vector<int>& x) {
-    if (!is_sorted(x.begin(), x.end())) {
-      return false;
-    }
-    memset(cache, -1, sizeof(cache));
+int solve(vector<int> &x) {
+  if (!is_sorted(x.begin(), x.end())) {
+    return false;
+  }
+  memset(cache, -1, sizeof(cache));
 
-    int ret = 0, sz = x.size();
-    for (int i = 0; i < x.size(); i++) {
-      ret += solve(0, i - 1, sz) * solve(i + 1, x.size() - 1, sz);
-    }
-    return ret;
+  int ret = 0, sz = x.size();
+  for (int i = 0; i < x.size(); i++) {
+    ret += solve(0, i - 1, sz) * solve(i + 1, x.size() - 1, sz);
+  }
+  return ret;
 }
 
 int main() {

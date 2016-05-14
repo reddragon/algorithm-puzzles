@@ -15,7 +15,8 @@ string solve1(string s) {
   vector<string> vs;
   string tmp;
   for (int i = 0; i < s.size(); i++) {
-    if (s[i] != ' ') tmp.push_back(s[i]);
+    if (s[i] != ' ')
+      tmp.push_back(s[i]);
     else {
       vs.push_back(tmp);
       tmp = "";
@@ -28,7 +29,8 @@ string solve1(string s) {
   string ret;
   for (int i = 0; i < vs.size(); i++) {
     ret += vs[i];
-    if (i + 1 < vs.size()) ret += " ";
+    if (i + 1 < vs.size())
+      ret += " ";
   }
   return ret;
 }

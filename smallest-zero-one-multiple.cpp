@@ -47,25 +47,26 @@ string solve(int n) {
     mod[i] = t;
     t = (t * 10) % n;
   }
-  map<int, vector<int> > pos;
+  map<int, vector<int>> pos;
 
   for (int i = 0; i < MAXN; i++) {
     bool found = false;
 
-    std::map<int, vector<int> > temp;
+    std::map<int, vector<int>> temp;
     {
       int newNum = mod[i];
       if (pos.find(newNum) == pos.end()) {
-          vector<int> me;
-          me.push_back(i);
-          temp[newNum] = me;
-          if (newNum == 0) {
-            found = true;
-          }
+        vector<int> me;
+        me.push_back(i);
+        temp[newNum] = me;
+        if (newNum == 0) {
+          found = true;
+        }
       }
     }
 
-    for (std::map<int, vector<int> >::iterator it = pos.begin(); it != pos.end(); it++) {
+    for (std::map<int, vector<int>>::iterator it = pos.begin(); it != pos.end();
+         it++) {
       int newNum = (it->first + mod[i]) % n;
       vector<int> existing = it->second;
       existing.push_back(i);
@@ -81,7 +82,8 @@ string solve(int n) {
     }
 
     if (temp.size() > 0) {
-      for (std::map<int, vector<int> >::iterator it = temp.begin(); it != temp.end(); it++) {
+      for (std::map<int, vector<int>>::iterator it = temp.begin();
+           it != temp.end(); it++) {
         pos[it->first] = it->second;
       }
     }

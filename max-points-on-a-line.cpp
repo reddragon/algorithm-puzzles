@@ -14,7 +14,7 @@ using namespace std;
 struct Fraction {
   int numerator, denominator;
 
-  bool operator ==(const Fraction& other) const {
+  bool operator==(const Fraction &other) const {
     return numerator == other.numerator && denominator == other.denominator;
   }
 };
@@ -46,7 +46,7 @@ Fraction getFraction(int numerator, int denominator) {
 struct Point {
   int x, y;
 
-  bool operator ==(const Point& other) const {
+  bool operator==(const Point &other) const {
     return x == other.x && y == other.y;
   }
 };
@@ -54,27 +54,26 @@ struct Point {
 struct Line {
   Fraction slope, intercept;
 
-  bool operator ==(const Line& other) const {
+  bool operator==(const Line &other) const {
     return slope == other.slope && intercept == other.intercept;
   }
 };
 
 // Hash functions below are terrible. Don't use for production.
 namespace std {
-  template<>
-  struct hash<Line> {
-    std::size_t operator() (const Line& l) const {
-      return (hash<int>()(l.slope.numerator) + hash<int>()(l.slope.denominator)
-        + hash<int>()(l.intercept.numerator) + hash<int>()(l.slope.denominator));
-    }
-  };
+template <> struct hash<Line> {
+  std::size_t operator()(const Line &l) const {
+    return (hash<int>()(l.slope.numerator) + hash<int>()(l.slope.denominator) +
+            hash<int>()(l.intercept.numerator) +
+            hash<int>()(l.slope.denominator));
+  }
+};
 
-  template<>
-  struct hash<Point> {
-    std::size_t operator() (const Point& p) const {
-      return (hash<int>()(p.x) + hash<int>()(p.y));
-    }
-  };
+template <> struct hash<Point> {
+  std::size_t operator()(const Point &p) const {
+    return (hash<int>()(p.x) + hash<int>()(p.y));
+  }
+};
 }
 
 Line getLine(Point a, Point b) {
