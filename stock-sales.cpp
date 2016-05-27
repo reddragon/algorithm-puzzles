@@ -1,6 +1,6 @@
 /**
  * Given a list of prices of a stock each day, find the maximum profit you can
- * make by buying and selling the same stock once. 
+ * make by buying and selling the same stock once.
  */
 
 #include <algorithm>
@@ -30,6 +30,6 @@ int solve(vector<int> prices) {
 }
 
 int main() {
-  assert(solve({1, 2, 3}) == 2);
+  EXPECT_EQ(1, solve({1, 2, 3}));
   return 0;
 }
