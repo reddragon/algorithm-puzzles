@@ -2,6 +2,12 @@
 
 #include <iostream>
 #include <cassert>
+#include <set>
+#include <map>
+#include <vector>
+#include <algorithm>
+#include <utility>
+#include <cstdio>
 
 #define EXPECT_EQ(X, Y) \
   { \
