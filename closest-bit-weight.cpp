@@ -52,38 +52,13 @@ uint64_t solve(uint64_t n) {
 
   int num = numBits(n);
   int ones = __builtin_popcount(n);
-  int zeroes = num - ones;
 
   uint64_t bestDiff = -1;
   uint64_t bestNum = -1;
-  // Generate the maximum number with one less non-leading 0 bit.
-  if (zeroes > 0) {
-    uint64_t candidate = 0;
-    for (int i = 0; i < ones; i++) {
-      candidate <<= 1;
-      candidate += 1;
-    }
-    candidate <<= (zeroes - 1);
-    if (absDiff(candidate, n) < bestDiff) {
-      bestNum = candidate;
-      bestDiff = absDiff(candidate, n);
-    }
-  }
-  // Generate the minimum number with one more non-leading 0 bit.
-  if (num < 64) {
-    uint64_t candidate = 1 << (zeroes + 1);
-    for (int i = 0; i < ones - 1; i++) {
-      candidate <<= 1;
-      candidate += 1;
-    }
-    if (absDiff(candidate, n) < bestDiff) {
-      bestNum = candidate;
-      bestDiff = absDiff(candidate, n);
-    }
-  }
+
   // Swap bits in the number.
-  for (int i = 0; i < num; i++) {
-    for (int j = 0; j < num; j++) {
+  for (int i = 0; i <= num; i++) {
+    for (int j = 0; j <= num; j++) {
       if (i != j) {
         uint64_t candidate = n - (1L << i) + (1L << j);
         if (__builtin_popcount(candidate) == ones) {
