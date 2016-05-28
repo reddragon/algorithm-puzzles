@@ -2,14 +2,13 @@
 
 using namespace std;
 
-template<class T>
-vector<vector<T>> getPowerSet(vector<T> s) {
+template <class T> vector<vector<T>> getPowerSet(vector<T> s) {
   vector<vector<T>> r;
 
-  for (uint32_t i = 0; i < (1L<<s.size()); i++) {
+  for (uint32_t i = 0; i < (1L << s.size()); i++) {
     vector<T> c;
     for (int j = 0; j < s.size(); j++) {
-      if (i & (1L<<j)) {
+      if (i & (1L << j)) {
         c.push_back(s[j]);
       }
     }

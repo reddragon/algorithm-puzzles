@@ -14,7 +14,7 @@ void bruteForceTest() {
   }
 
   for (uint16_t i = 1; i < numeric_limits<uint16_t>::max(); i++) {
-    const auto& w = weightMap[__builtin_popcount(i)];
+    const auto &w = weightMap[__builtin_popcount(i)];
     uint16_t bestDiff = numeric_limits<uint16_t>::max();
     int idx = -1;
     for (int j = 0; j < w.size(); j++) {
@@ -85,7 +85,7 @@ uint64_t solve(uint64_t n) {
   for (int i = 0; i < num; i++) {
     for (int j = 0; j < num; j++) {
       if (i != j) {
-        uint64_t candidate = n - (1L<<i) + (1L<<j);
+        uint64_t candidate = n - (1L << i) + (1L << j);
         if (__builtin_popcount(candidate) == ones) {
           if (candidate != n && absDiff(candidate, n) < bestDiff) {
             bestNum = candidate;
@@ -98,15 +98,4 @@ uint64_t solve(uint64_t n) {
   return bestNum;
 }
 
-void solveFirst1K() {
-  for (uint64_t i = 1; i <= 1000; i++) {
-    cout << toBinaryStr(i) << " " << toBinaryStr(solve(i)) << endl;
-  }
-}
-
-int main() {
-  bruteForceTest();
-  // bruteForce();
-  // solveFirst1K();
-  // cout << toBinaryStr(solve(10)) << endl;
-}
+int main() { bruteForceTest(); }
