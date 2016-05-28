@@ -8,6 +8,11 @@
 #include <algorithm>
 #include <utility>
 #include <cstdio>
+#include <limits>
+#include <bitset>
+#include <string>
+
+using namespace std;
 
 #define EXPECT_EQ(X, Y) \
   { \
@@ -16,3 +21,13 @@
     } \
     assert(X == Y); \
   }
+
+string toBinaryStr(uint64_t n) {
+  string r;
+  do {
+    r.push_back('0' + n % 2);
+    n /= 2;
+  } while (n != 0);
+  reverse(r.begin(), r.end());
+  return r;
+}
