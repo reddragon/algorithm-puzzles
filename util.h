@@ -31,3 +31,48 @@ string toBinaryStr(uint64_t n) {
   reverse(r.begin(), r.end());
   return r;
 }
+
+// Linked List Related Methods
+template<typename T>
+struct ListNode {
+  T data;
+  ListNode<T> *next;
+};
+
+template <typename T>
+ListNode<T> *createListNode(T data) {
+  ListNode<T> *newNode = new ListNode<T>();
+  newNode->data = data;
+  newNode->next = nullptr;
+  return newNode;
+}
+
+template <typename T>
+ListNode<T> *appendTo(ListNode<T> *n, ListNode<T> *next) {
+  n->next = next;
+  return next;
+}
+
+template <typename T>
+ListNode<T> *appendTo(ListNode<T> *n, T data) {
+  ListNode<T> *newNode = createListNode(data);
+  return appendTo(n, newNode);
+}
+
+template <typename T>
+int length(ListNode<T> *n) {
+  if (n == nullptr) {
+    return 0;
+  }
+  return 1 + length(n->next);
+}
+
+template <typename T>
+void iterate(ListNode<T> *n) {
+  if (n == nullptr) {
+    cout << endl;
+    return;
+  }
+  cout << n->data << " ";
+  iterate(n->next);
+}
