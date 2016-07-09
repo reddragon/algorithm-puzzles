@@ -12,6 +12,7 @@
 #include <bitset>
 #include <string>
 #include <iterator>
+#include <cmath>
 
 using namespace std;
 
