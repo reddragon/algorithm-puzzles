@@ -13,6 +13,9 @@
 #include <string>
 #include <iterator>
 #include <cmath>
+#include <queue>
+#include <numeric>
+#include <unordered_map>
 
 using namespace std;
 
@@ -33,6 +36,13 @@ string toBinaryStr(uint64_t n) {
   reverse(r.begin(), r.end());
   return r;
 }
+
+struct TreeNode {
+  int val;
+  TreeNode *left;
+  TreeNode *right;
+  TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
 
 // Linked List Related Methods
 template<typename T>
