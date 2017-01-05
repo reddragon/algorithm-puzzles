@@ -25,36 +25,36 @@ struct ListNode {
 
 class Solution {
 public:
-    ListNode* hasCycleNode(ListNode *h) {
-      auto s = h;
-      auto f = h;
-      int iter = 0;
+  ListNode *hasCycleNode(ListNode *h) {
+    auto s = h;
+    auto f = h;
+    int iter = 0;
 
-      while (s != nullptr && f != nullptr) {
-        if (iter > 0 && s == f) return s;
-        s = s->next;
-        f = (f->next != nullptr ? f->next->next : nullptr);
-        iter++;
-      }
-      return nullptr;
+    while (s != nullptr && f != nullptr) {
+      if (iter > 0 && s == f)
+        return s;
+      s = s->next;
+      f = (f->next != nullptr ? f->next->next : nullptr);
+      iter++;
     }
+    return nullptr;
+  }
 
-    bool hasCycle(ListNode *h) {
-      return hasCycleNode(h) != nullptr;
-    }
+  bool hasCycle(ListNode *h) { return hasCycleNode(h) != nullptr; }
 };
 
-#define DECL_NODES \
-  ListNode *n1 = new ListNode(1); \
-  ListNode *n2 = new ListNode(2); \
-  ListNode *n3 = new ListNode(3); \
-  ListNode *n4 = new ListNode(4); \
-  ListNode *n5 = new ListNode(5); \
+#define DECL_NODES                                                             \
+  ListNode *n1 = new ListNode(1);                                              \
+  ListNode *n2 = new ListNode(2);                                              \
+  ListNode *n3 = new ListNode(3);                                              \
+  ListNode *n4 = new ListNode(4);                                              \
+  ListNode *n5 = new ListNode(5);                                              \
   ListNode *n6 = new ListNode(6)
 
-void setUpNext(vector<ListNode*> v) {
+void setUpNext(vector<ListNode *> v) {
   for (int i = 0; i < v.size(); i++) {
-    if (i+1 < v.size()) v[i]->setNext(v[i+1]);
+    if (i + 1 < v.size())
+      v[i]->setNext(v[i + 1]);
   }
 }
 

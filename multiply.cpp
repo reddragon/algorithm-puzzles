@@ -5,7 +5,7 @@ uint32_t add(uint32_t a, uint32_t b) {
   uint32_t result = 0, carryIn = 0, carryOut = 0;
   size_t bit = 0;
 
-  for (; a | b | carryIn; ) {
+  for (; a | b | carryIn;) {
     uint32_t a1 = a & 1, b1 = b & 1;
     uint32_t sum = a1 ^ b1 ^ carryIn;
     uint32_t carryOut = (a1 & carryIn) | (b1 & carryIn) | (a1 & b1);

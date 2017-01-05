@@ -7,7 +7,7 @@ ListNode<T> *intersection(ListNode<T> *n1, ListNode<T> *n2) {
   int l1 = length(n1);
   int l2 = length(n2);
 
-  for (; n1 != n2 && n1 != nullptr && n2 != nullptr; ) {
+  for (; n1 != n2 && n1 != nullptr && n2 != nullptr;) {
     if (l1 > l2) {
       n1 = n1->next;
       l1--;

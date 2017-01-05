@@ -25,54 +25,63 @@ struct ListNode {
 
 class Solution {
 public:
-    ListNode* hasCycleNode(ListNode *h) {
-      auto s = h;
-      auto f = h;
-      int iter = 0;
+  ListNode *hasCycleNode(ListNode *h) {
+    auto s = h;
+    auto f = h;
+    int iter = 0;
 
-      while (s != nullptr && f != nullptr) {
-        if (iter > 0 && s == f) return s;
-        s = s->next;
-        f = (f->next != nullptr ? f->next->next : nullptr);
-        iter++;
-      }
-      return nullptr;
+    while (s != nullptr && f != nullptr) {
+      if (iter > 0 && s == f)
+        return s;
+      s = s->next;
+      f = (f->next != nullptr ? f->next->next : nullptr);
+      iter++;
     }
+    return nullptr;
+  }
 
-    int cycleLength(ListNode *s) {
-      auto p = s;
+  int cycleLength(ListNode *s) {
+    auto p = s;
+    p = p->next;
+    int iter = 0;
+    while (p != s) {
+      iter++;
       p = p->next;
-      int iter = 0;
-      while (p != s) { iter++; p = p->next; }
-      return iter;
     }
+    return iter;
+  }
 
-    ListNode *detectCycle(ListNode *h) {
-      auto n = hasCycleNode(h);
-      if (n == nullptr) return n;
-      int len = cycleLength(n);
-      if (len == 0) return n;
+  ListNode *detectCycle(ListNode *h) {
+    auto n = hasCycleNode(h);
+    if (n == nullptr)
+      return n;
+    int len = cycleLength(n);
+    if (len == 0)
+      return n;
 
-      auto s = h, f = h;
-      for (int i = 0; i <= len; i++) f = f->next;
-      while (s != f) {
-        s = s->next; f = f->next;
-      }
-      return s;
+    auto s = h, f = h;
+    for (int i = 0; i <= len; i++)
+      f = f->next;
+    while (s != f) {
+      s = s->next;
+      f = f->next;
     }
+    return s;
+  }
 };
 
-#define DECL_NODES \
-  ListNode *n1 = new ListNode(1); \
-  ListNode *n2 = new ListNode(2); \
-  ListNode *n3 = new ListNode(3); \
-  ListNode *n4 = new ListNode(4); \
-  ListNode *n5 = new ListNode(5); \
+#define DECL_NODES                                                             \
+  ListNode *n1 = new ListNode(1);                                              \
+  ListNode *n2 = new ListNode(2);                                              \
+  ListNode *n3 = new ListNode(3);                                              \
+  ListNode *n4 = new ListNode(4);                                              \
+  ListNode *n5 = new ListNode(5);                                              \
   ListNode *n6 = new ListNode(6)
 
-void setUpNext(vector<ListNode*> v) {
+void setUpNext(vector<ListNode *> v) {
   for (int i = 0; i < v.size(); i++) {
-    if (i+1 < v.size()) v[i]->setNext(v[i+1]);
+    if (i + 1 < v.size())
+      v[i]->setNext(v[i + 1]);
   }
 }
 

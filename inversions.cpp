@@ -16,7 +16,7 @@ int inversionsNaive(vector<int> v) {
   return count;
 }
 
-int inversionUsingSort(vector<int>& v) {
+int inversionUsingSort(vector<int> &v) {
   if (v.size() <= 1) {
     return 0;
   }
@@ -34,7 +34,7 @@ int inversionUsingSort(vector<int>& v) {
   auto second = secondPart.begin();
 
   size_t idx = 0;
-  for (; first != firstPart.end() || second != secondPart.end(); ) {
+  for (; first != firstPart.end() || second != secondPart.end();) {
     if (first == firstPart.end()) {
       v[idx++] = *second;
       second++;
@@ -59,12 +59,11 @@ int inversionUsingSort(vector<int>& v) {
   return count;
 }
 
-int inversions(const vector<int>& v) {
+int inversions(const vector<int> &v) {
   // Make a copy of the vector.
   vector<int> vc = v;
   return inversionUsingSort(vc);
 }
-
 
 int main() {
   {

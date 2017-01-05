@@ -20,7 +20,6 @@ vector<int> getNonUniqueFactorization(int n) {
   return results;
 }
 
-
 int main() {
   assert(getNonUniqueFactorization(16) == vector<int>({2, 2, 2, 2}));
   assert(getNonUniqueFactorization(123) == vector<int>({3, 41}));

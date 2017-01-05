@@ -5,12 +5,11 @@ struct Node {
   Node *prev, *next;
 };
 
-class LRUCache{
- public:
-  unordered_map<int, Node*> m;
+class LRUCache {
+public:
+  unordered_map<int, Node *> m;
   Node *head, *tail;
   int capacity_, size_;
-
 
   LRUCache(int capacity) {
     capacity_ = capacity;
@@ -24,13 +23,17 @@ class LRUCache{
     int c = 0;
     cout << "[";
     while (t != nullptr) {
-      if (t == head) cout << "(H)";
-      if (t == tail) cout << "(T)";
+      if (t == head)
+        cout << "(H)";
+      if (t == tail)
+        cout << "(T)";
       cout << t->key;
-      if (t->next != nullptr) cout << " -> ";
+      if (t->next != nullptr)
+        cout << " -> ";
       t = t->next;
       c++;
-      if (c > 10) break;
+      if (c > 10)
+        break;
     }
     cout << "]" << endl;
   }
@@ -44,9 +47,12 @@ class LRUCache{
     // Only need to update for non-head nodes.
     if (n != head) {
       Node *prev = n->prev, *next = n->next;
-      if (prev != nullptr) prev->next = next;
-      if (next != nullptr) next->prev = prev;
-      if (next == nullptr) tail = prev;
+      if (prev != nullptr)
+        prev->next = next;
+      if (next != nullptr)
+        next->prev = prev;
+      if (next == nullptr)
+        tail = prev;
       n->prev = nullptr;
       n->next = head;
       head->prev = n;
@@ -56,7 +62,8 @@ class LRUCache{
 
   int get(int key) {
     auto it = m.find(key);
-    if (it == m.end()) return -1;
+    if (it == m.end())
+      return -1;
 
     Node *n = it->second;
     update(n);
@@ -82,7 +89,8 @@ class LRUCache{
       n->value = value;
       n->next = nullptr;
       n->prev = tail;
-      if (tail != nullptr) tail->next = n;
+      if (tail != nullptr)
+        tail->next = n;
       tail = n;
       m[key] = n;
     } else {

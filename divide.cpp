@@ -7,7 +7,7 @@ pair<uint64_t, uint64_t> divide(uint64_t a, uint64_t b) {
   vector<pair<uint64_t, uint64_t>> p;
   p.push_back(make_pair(b, 1));
   uint64_t x = b, y = 1;
-  for (; x < a; ) {
+  for (; x < a;) {
     // Overflow
     if (x + x < x) {
       break;
