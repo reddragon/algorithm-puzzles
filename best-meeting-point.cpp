@@ -17,22 +17,19 @@ pii solve(const vector<pii>& l, int N) {
     return a.second < b.second;
   });
 
-  int pivot = locs[locs.size()/2].first;
-  remove_if(locs.begin(), locs.begin(), [pivot](const pii& v) {
-    return v.first != pivot;
-  });
-
+  int xPivot = locs[locs.size()/2].first;
   // Sort by second dim
   sort(locs.begin(), locs.end(), [](const pii& a, const pii& b) {
     if (a.second < b.second) return true;
     if (a.second > b.second) return false;
     return a.first < b.first;
   });
-  return locs[locs.size()/2];
+  return make_pair(xPivot, locs[locs.size()/2].second);
 }
 
 int main() {
-  assert(pii({0,2}) == solve({{0,0},{2,0},{0,2},{2,2}}, 3));
+  assert(pii({2,2}) == solve({{0,0},{2,0},{0,2},{2,2}}, 3));
   assert(pii({0,2}) == solve({{0,0},{0,1},{0,2},{0,3},{0,4}}, 3));
+  assert(pii({1,0}) == solve({{0,0},{1,2},{4,0}},5));
   return 0;
 }
