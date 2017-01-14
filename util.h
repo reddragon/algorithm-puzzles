@@ -21,10 +21,12 @@ using namespace std;
 
 #define EXPECT_EQ(X, Y)                                                        \
   {                                                                            \
-    if (X != Y) {                                                              \
-      cerr << "Expected " << X << ", but received " << Y << endl;              \
+    const auto& xV = X;                                                        \
+    const auto& yV = Y;                                                        \
+    if (xV != yV) {                                                            \
+      cerr << "Expected " << xV << ", but received " << yV << endl;            \
     }                                                                          \
-    assert(X == Y);                                                            \
+    assert(xV == yV);                                                          \
   }
 
 string toBinaryStr(uint64_t n) {
